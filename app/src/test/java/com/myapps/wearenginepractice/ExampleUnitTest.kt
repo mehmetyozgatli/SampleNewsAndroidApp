@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp
+package com.myapps.wearenginepractice
 
 import org.junit.Test
 

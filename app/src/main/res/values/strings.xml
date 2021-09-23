@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MVVMNewsApp</string>
+    <string name="check_available_devices">Check Available Devices</string>
+    <string name="querying_wearable_device">Querying Wearable Device</string>
+    <string name="ping_bounded_device">Ping Bounded Device</string>
+    <string name="send_message_to_bounded_device">Send Message To Bounded Device</string>
+    <string name="register_receiver">Register Receiver</string>
 </resources>
