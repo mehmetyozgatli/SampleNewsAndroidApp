@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_news.*
 class NewsActivity : AppCompatActivity() {
 
     private lateinit var viewModel: NewsViewModel
-    private val PERMISSIONS_STORAGE = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+    private val PERMISSIONS_STORAGE = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private val REQUEST_EXTERNAL_STORAGE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,10 +64,13 @@ class NewsActivity : AppCompatActivity() {
      * Apply for the read permission on the external storage device.
      */
     private fun verifyStoragePermissions() {
-        val permission = ActivityCompat.checkSelfPermission(this,
+        val permissionRead = ActivityCompat.checkSelfPermission(this,
             Manifest.permission.READ_EXTERNAL_STORAGE)
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
+        val permissionWrite = ActivityCompat.checkSelfPermission(this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        if (permissionRead != PackageManager.PERMISSION_GRANTED && permissionWrite != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                 this,
                 PERMISSIONS_STORAGE,

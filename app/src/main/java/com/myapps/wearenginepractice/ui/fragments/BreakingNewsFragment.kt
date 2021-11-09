@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.huawei.hmf.tasks.OnSuccessListener
+import com.huawei.hms.api.HuaweiApiAvailability
 import com.huawei.wearengine.HiWear
 import com.huawei.wearengine.device.Device
 import com.huawei.wearengine.device.DeviceClient
@@ -74,9 +75,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
         setupRecyclerView()
 
+        //val apiAvailability = HuaweiApiAvailability.getInstance()
+
         // Wearable App Information
         val peerPkgName = "com.myapps.wearenginepractices"
-        val peerFingerPrint = "com.myapps.wearenginepractices_BLZuSIOv61FbrIyDenjI5b0A0+pbnm0atCNzpIt0OcMom3AT0+I+dlQE743fc9VcU5tkb9G5Edy5budtpSYrX9g="
+        val peerFingerPrint = "com.myapps.wearenginepractices_BELk4ejgPpN6GP2gM0298wTEaYETQnnZEruLwVIq3ao1024w41Vpb7faxlyN+nHqB0GsZ1V2WiCoTe4ykGGXzS0="
 
         p2pClient = HiWear.getP2pClient(requireContext())
         deviceClient = HiWear.getDeviceClient(requireContext())
@@ -192,9 +195,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             if (connectedDevice != null && connectedDevice?.isConnected == true) {
 
                 p2pClient?.ping(connectedDevice) {
-                    // Toast.makeText(requireContext(), "Ping Result", Toast.LENGTH_LONG).show()
+                    var result = it
+                    //Toast.makeText(requireContext(), "Ping Result", Toast.LENGTH_LONG).show()
                 }
                     ?.addOnSuccessListener {
+                        var resultListener = it
                         Toast.makeText(requireContext(), "Success Ping", Toast.LENGTH_LONG).show()
                     }
                     ?.addOnFailureListener {

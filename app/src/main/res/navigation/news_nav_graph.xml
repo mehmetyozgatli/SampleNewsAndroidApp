@@ -55,4 +55,8 @@
             app:nullable="true"
             android:defaultValue="https://www.google.com" />
     </fragment>
+    <fragment
+        android:id="@+id/qrCodeFragment"
+        android:name="com.myapps.wearenginepractice.ui.fragments.QrCodeFragment"
+        android:label="QrCodeFragment" />
 </navigation>

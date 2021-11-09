@@ -13,4 +13,8 @@
         android:title="Search News"
         android:icon="@drawable/ic_all_news"/>
 
+    <item android:id="@+id/qrCodeFragment"
+        android:title="QR"
+        android:icon="@drawable/ic_qr_code_scanner"/>
+
 </menu>
